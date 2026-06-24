@@ -10,7 +10,6 @@ module trans_enc_dec #(
     output reg tx,
     output reg tx_busy
 );
-
     localparam BAUD_COUNT = CLOCK_FREQ / BAUD_RATE;
     localparam [7:0] XOR_KEY = 8'hAA; // Fixed XOR key
 
@@ -22,7 +21,7 @@ module trans_enc_dec #(
     wire tx_start_edge;
 
     assign tx_start_edge = tx_start & ~tx_start_prev;
-
+    
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             tx <= 1;
